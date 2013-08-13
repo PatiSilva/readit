@@ -2,7 +2,9 @@ class CommentsController < ApplicationController
   before_filter :redirect_back_unless_logged_in
 
   def create
-    @comment = current_user.comments.create(params[:comment])
+    @comment = current_user.comments.new(params[:comment])
+    @comment.link_id = params[:link_id]
+    @comment.save
     redirect_to :back
   end
 

@@ -1,5 +1,12 @@
 Readit::Application.routes.draw do
   devise_for :users
+  resources :pages
+  resources :links do
+    resources :comments
+  end
+
+  match 'search' => 'pages#search'
+  root :to => "pages#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -57,12 +64,4 @@ Readit::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
-
-  resources :pages
-  
-  resources :links do
-    resources :comments
-  end
-
-  root to: "pages#index"
 end

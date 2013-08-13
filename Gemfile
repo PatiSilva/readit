@@ -9,6 +9,11 @@ gem 'sqlite3'
 gem 'devise'
 gem 'haml'
 gem 'will_paginate'
+gem 'sunspot_rails'
+
+group :development	do #don't deploy to production environments use heroku add on webSolar
+	gem 'sunspot_solr'
+end
 
 
 # Gems used only for assets and not required
